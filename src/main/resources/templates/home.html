@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet"> 
+
+    <link th:href="@{/styles/home_style.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MainPage</title> 
+</head>
+<body>
+
+    <p id="token" th:text="${token}"></p>
+
+
+    <div id="mainContainer">
+
+        <div id="navbar">
+
+            <ul class="navList">
+                <li class="listItems"> <button id="displayHome" type = "button">Home</li>
+                <li class="listItems"> <button id="displayProfile" type = "button">Profile</li>
+            </ul>
+
+        </div>
+
+        <div id="QsList">
+
+        </div>
+
+        <div id="commentSectionContainer">
+
+             <div id="commentSection">
+        
+               
+    
+    
+            
+            </div>
+        </div>
+
+
+        <div id="inputForQs">
+
+            <button id="closeBtn" value = "X">X</button>
+
+            <form id="qsInputForm">
+
+                <label for="qsInput"></label>
+               <!-- <input type="text" id="qsInput" name="qsInput"></input>-->
+
+                <textarea id ="qsInput" name="qsInput" rows="10" cols="100" maxlength="800"></textarea>
+
+                <button id="postQs1" type="button" name="postQs1">Post
+
+            </form>
+
+        </div>
+
+        <div>
+
+            <button id="displayInputForQs" type="button" name="inputForQs">
+            Post Qs.
+        
+           
+        </div>
+
+    </div>
+    
+    
+ <script type="text/javascript" th:src="@{/js/home_user.js}"></script>
+
+
+  
+
+
+</body> 
+</html>

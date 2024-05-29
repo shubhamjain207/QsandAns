@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link th:href="@{/styles/login_style.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    
+    <div id="main_container">
+
+        <h1>Login</h1>
+        <div id="form_container">
+
+          
+
+        <form th:object="${user}">
+               
+            <div class="formItems">
+                <label for="username" >User Name:</label>
+                <input id="username" type="text" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username') ? 'error':''}">
+            </div>
+                <div th:each="e : ${#fields.errors('username')}" th:text="${e}"></div> 
+
+                
+                <div class="formItems">
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password" th:field="*{password}" >
+                </div>
+
+                <div class="formItems">
+                <input id="submitButton" type = "button" value="Login">
+            </div>
+            </form>
+        </div>
+    </div>
+
+   <script type="text/javascript" th:src="@{/js/login_user.js}"></script>
+
+   <script type="module">
+
+    // Import the functions you need from the SDKs you need
+  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+  
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
+  
+    // TODO: Add SDKs for Firebase products that you want to use
+  
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+  
+    // Your web app's Firebase configuration
+  
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  
+    const firebaseConfig = {
+  
+      apiKey: "AIzaSyB9Jzkh0ne0iQ3K40bind7yDmGGJcK80uw",
+  
+      authDomain: "qsandans-e2070.firebaseapp.com",
+  
+      projectId: "qsandans-e2070",
+  
+      storageBucket: "qsandans-e2070.appspot.com",
+  
+      messagingSenderId: "196604184967",
+  
+      appId: "1:196604184967:web:f6d72246dca012e93aab22",
+  
+      measurementId: "G-0DV3R5Q6GX"
+  
+    };
+  
+  
+    // Initialize Firebase
+  
+    const app = initializeApp(firebaseConfig);
+  
+    const analytics = getAnalytics(app);
+
+</body>
+</html>

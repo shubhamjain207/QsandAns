@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+
+    
+    
+    <link th:href="@{/styles/createProfilePage_style.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Profile</title>
+</head>
+<body>
+
+    
+<div id="container">
+
+    <div id="navbar">
+
+        <ul class="navList">
+            <li class="listItems"> <button class="displayHome active-link" type = "button">Home</li>
+            <li class="listItems"> <button class="displayProfile active-link" type = "button">Profile</li>
+        </ul>
+
+    </div>
+
+    
+    <div id="commentSectionContainer">
+
+
+        <div id="commentSection">
+    
+           
+
+
+        
+        </div>
+    </div>
+
+    <div id="main_container">
+
+       <p id="token" th:text="${token}"></p>
+
+       <p id = "username" th:text="${username}"></p>
+       <p id = "fullname" th:text="${fullname}"></p>
+       
+
+    </div>
+
+<div id="yourQsContainer">
+
+
+
+
+</div>
+
+</div>    
+
+        
+       
+   
+
+    <script type="text/javascript" th:src="@{/js/profile_user.js}"></script>
+
+
+</body>
+</html>
