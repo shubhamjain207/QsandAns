@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(54, 69, 79, 1);
+    background-color: #DCDCDC;
     height:100vh;
     width:100vw;
     display: flex;
@@ -23,11 +23,13 @@ z-index: 100;
 }
 
 #displayHome{
-    background-color:rgb(54, 69, 79, 1) ;
+    color:rgb(54, 69, 79, 1) ;
+    background-color:#DCDCDC;
 }
 
 #displayProfile{
-    background-color:rgb(54, 69, 79, 1) ;
+    color:rgb(54, 69, 79, 1) ;
+    background-color:#DCDCDC;
 }
 
 
@@ -102,12 +104,12 @@ z-index: 100;
     position:fixed;
     bottom: 30px;
     right:30px;
-    color: black;
+    color: white;
     height: 50px;
     width:80px;
     border:none;
     border-radius: 10px;
-    background-color: rgba(232, 236, 241, 1);
+    background-color: rgba(108, 122, 137, 1);
 }
 
 #displayInputForQs:hover{
@@ -193,7 +195,7 @@ z-index: 100;
     justify-content:start;
     align-items:start;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
@@ -232,7 +234,8 @@ z-index: 100;
     background-color: rgba(232, 236, 241, 1); 
        border-color: rgba(0, 0, 0, 0.256);
         resize: none;
-    
+        height: 50px;   
+     
 }
 
 #commentSection{
@@ -247,7 +250,7 @@ overflow-y: scroll;
     flex-direction: column;
     font-size: 20px;
     align-items: center;
-    background-color: #5b1414f5;
+    background-color: rgba(108, 122, 137, 1);
     border-radius: 10px;
     gap: 10px;
    
@@ -293,6 +296,7 @@ overflow-y: scroll;
 }
 
 .qsListItemDetails{
+    margin-left: auto;
     font-size: 15px;
     color: rgba(0, 0, 0, 0.688);
 }
