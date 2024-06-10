@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-color: rgb(54, 69, 79, 1);
     
 }
 
@@ -14,12 +14,38 @@ body{
     color: white;
 }
 
+#submitButton{
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px 14px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      border-radius: 6px;
+      border: none;
+    
+      color: #fff;
+      background: rgb(54, 69, 79, 1);
+       background-origin: border-box;
+      box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    #submitButton:focus {
+        box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+        outline: 0;
+      }
+
 
 #form_container{
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 4px 12px;
+
     color:white;
-    border: 1px solid #5b1414f5;
+    border: 1px solid rgba(108, 122, 137, 1);
     border-radius: 10px;
-    background-color: #5b1414f5;
+    background-color: rgba(108, 122, 137, 1);
     height:400px;
     width: 200px;
     padding:20px;
@@ -29,7 +55,13 @@ body{
 
 }
 
+#username{
+    color: black;
+}
 
+#password{
+    color:black;
+}
 
 .error{
     border:1px solid red;

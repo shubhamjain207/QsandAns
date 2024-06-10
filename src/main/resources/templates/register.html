@@ -22,7 +22,7 @@
 
 
                     <label for="username" >User Name:</label>
-                <input type="text" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username') ? 'error':''}">
+                <input id="username" type="text" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username') ? 'error':''}">
                 </div>
 
                 
@@ -30,7 +30,7 @@
                 <div th:each="e : ${#fields.errors('username')}" th:text="${e}"></div>
  <div class="formItems">
                 <label for="password">Password:</label>
-                <input type="password" name="password" th:field="*{password}" >
+                <input id="password" type="password" name="password" th:field="*{password}" >
 
                 <!--<label for="profileimage" >Profile Picture:</label>
 
@@ -40,7 +40,7 @@
 
         <div class="formItems">
                 <label for="fullname" >Full Name:</label>
-                <input type="text" name="fullname" th:field="*{fullname}">
+                <input  id="fullname" type="text" name="fullname" th:field="*{fullname}">
 
             </div>
         <div class="formItems">
