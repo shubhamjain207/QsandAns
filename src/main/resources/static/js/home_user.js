@@ -10,7 +10,6 @@ let commentSectionContainer = document.getElementById("commentSectionContainer")
 let postQsBtn = document.getElementById("postQs1");
 let displayInputForQs = document.getElementById("displayInputForQs");
 let inputForQs = document.getElementById("inputForQs");
-
 let closeBtn = document.getElementById("closeBtn");
 
 let tokenEle = document.getElementById("token");
@@ -120,6 +119,12 @@ xhttp1.onload = () => {
             <textarea class ="commentBox" name="commentBox" rows="10" cols="100" maxlength="400"></textarea>
             <button onclick="postComment()" type="button" class="postCommentBtn">Post Comment</button>
       </div>
+
+      
+      <div class="likeBtnBox">
+            <button onclick="likePost()" type="button" class="likePostBtn">Like</button>
+      </div>
+
       
       <div class="showCommentsContainer">
       <button onclick="myFunction(event)" type="button" class="showCommentsBtn">Comments</button>
@@ -133,6 +138,38 @@ xhttp1.onload = () => {
     });
   }
 };
+
+
+function likePost(){
+
+  var data = {
+
+    "likeCount":"1000",
+   
+
+  }
+ 
+  var jsonData = JSON.stringify(data);
+
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("PUT", "/auth/questions/like", true);
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.setRequestHeader("Authorization", "Bearer " + tokenEle.innerText);
+  xhttp.send(jsonData);
+
+  xhttp.onload = () => {
+    if (xhttp.status === 200) {
+     // var responseData = JSON.parse(xhttp.response);
+      // window.location.href = `/user/profile?token=${tokenEle.innerText}`;
+     // window.location.href = `/user/home?token=${tokenEle.innerText}`;
+    }
+  };
+
+
+
+}
 
 // let displayComments = document.getElementById("showCommentsBtn");
 
@@ -197,9 +234,6 @@ function myFunction(event){
 
 var qsListItemTimeMilli = event.target.parentElement.parentElement.getElementsByClassName("qsListItemTimeMilli")[0];
 var userPost = event.target.parentElement.parentElement.getElementsByClassName("userPost")[0];
-
-
-
 
 
 var xhttp1 = new XMLHttpRequest();
@@ -297,8 +331,8 @@ let qsInput = document.getElementById("qsInput");
 
     "content":qsInput.value,
     "time":date.toString(),
-    "timemilli":date1.toString()
-
+    "timemilli":date1.toString(),
+    "likecount":"0"
   }
 
   var jsonData = JSON.stringify(data);

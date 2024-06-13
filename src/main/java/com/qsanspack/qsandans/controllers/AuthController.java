@@ -28,6 +28,9 @@ import com.qsanspack.qsandans.services.AuthenticationService;
 import com.qsanspack.qsandans.services.JwtHelper;
 import com.qsanspack.qsandans.services.JwtResponse;
 import com.qsanspack.qsandans.services.UserService;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
     @RestController
     @RequestMapping("/auth")
@@ -81,7 +84,7 @@ import com.qsanspack.qsandans.services.UserService;
     public User setQs(@AuthenticationPrincipal User details,@RequestBody Map<String, String> requestData) {
 
             
-             User user = userService.setQs(details.getUsername(), requestData.get("content"),requestData.get("time"),details.getUsername(),requestData.get("timemilli"));
+             User user = userService.setQs(details.getUsername(), requestData.get("content"),requestData.get("time"),details.getUsername(),requestData.get("timemilli"), Integer.parseInt(requestData.get("likecount")));
              return user;
         
        
@@ -95,6 +98,13 @@ import com.qsanspack.qsandans.services.UserService;
         return user;
         
        
+    }
+
+    @PutMapping("/questions/like")
+    public ResponseEntity<?>  updateLikeCount(@RequestBody Map<String, Integer> requestData) {
+
+        userService.updateLikeCount(2602, requestData.get("likeCount"));
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/getAllQs")

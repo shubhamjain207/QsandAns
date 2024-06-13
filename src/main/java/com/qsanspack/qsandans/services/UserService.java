@@ -13,12 +13,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.qsanspack.qsandans.entities.Comment;
+import com.qsanspack.qsandans.entities.Like;
 import com.qsanspack.qsandans.entities.Question;
 import com.qsanspack.qsandans.entities.User;
 import com.qsanspack.qsandans.repos.CommentRepo;
 import com.qsanspack.qsandans.repos.QuestionRepo;
 import com.qsanspack.qsandans.repos.UserRepo;
-
 
 
 @Service
@@ -33,6 +33,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private CommentRepo repo2;
 
+  
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
        
@@ -45,14 +47,15 @@ public class UserService implements UserDetailsService {
     }
 
    
-    public User setQs(String username,String qs,String qsTime,String qsUser,String qsTimeMilli){
+    public User setQs(String username,String qs,String qsTime,String qsUser,String qsTimeMilli, int likeCount){
        
         User user= repo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("User name not found"));
 
         if(user!=null){
             
             repo.save(user);
-            repo1.save(new Question(0, qs,qsTime,qsUser,qsTimeMilli));
+            repo1.save(new Question(0, qs,qsTime,qsUser,qsTimeMilli, likeCount));
+            
         }
 
 
@@ -60,6 +63,14 @@ public class UserService implements UserDetailsService {
         
 
     }
+
+    public void updateLikeCount(int questionId, int likeCount){
+
+
+        repo1.updateLikeCount(questionId, likeCount);
+
+    }
+
 
     public User setComment(String comment,String commentTime,String commentUser,String commentPostUser,String commentTimeMilli){
        

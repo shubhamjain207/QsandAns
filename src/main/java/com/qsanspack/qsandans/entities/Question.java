@@ -22,7 +22,8 @@ public class Question{
     private String questioncontent;
     private String questionTime;
     private String question_time_milli;
-    
+    private int likeCount;
+
     public String getQuestion_time_milli() {
         return question_time_milli;
     }
@@ -47,6 +48,15 @@ public class Question{
         this.questionUser = questionUser;
     }
 
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+
     private String questionUser;
     
 
@@ -56,12 +66,13 @@ public class Question{
 
     
 
-    public Question(int id, String questioncontent, String questionTime, String questionUser,String question_time_milli) {
+    public Question(int id, String questioncontent, String questionTime, String questionUser,String question_time_milli, int likeCount) {
         this.id = id;
         this.questioncontent = questioncontent;
         this.questionTime = questionTime;
         this.questionUser = questionUser;
         this.question_time_milli = question_time_milli;
+        this.likeCount = likeCount;
     }
 
     public void setId(int id) {
