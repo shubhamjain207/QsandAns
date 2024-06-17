@@ -2,6 +2,7 @@ package com.qsanspack.qsandans.entities;
 
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,10 +38,17 @@ public class User implements UserDetails {
     private String password;
     private String profilepicture;
     private String fullname;
-    
-
+    private Set<Integer> likedQuestions;
     private Set<Role> authorities;
     
+
+    public Set<Integer> getLikedQuestions() {
+        return likedQuestions;
+    }
+
+    public void setLikedQuestions(int questionId) {
+        this.likedQuestions.add(questionId);
+    }
 
     public User() {
         super();
@@ -59,6 +67,7 @@ public class User implements UserDetails {
         this.profilepicture = profilepicture;
         this.fullname = fullname;
         this.authorities = authorities;
+        this.likedQuestions = new HashSet<Integer>();
        
     }
 

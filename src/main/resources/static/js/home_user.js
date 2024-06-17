@@ -21,7 +21,6 @@ closeBtn.addEventListener('click',()=>{
     
   }
 
-  
   if(displayInputForQs.style.display = "none"){
     displayInputForQs.style.display = "block";
   }
@@ -61,9 +60,6 @@ if (currentPageUrl.includes('user/profile')) {
 else if (currentPageUrl.includes('user/home')) {
   displayHome.classList.add('active-link');
 } 
-
-
-
 
 
 displayInputForQs.addEventListener("click",function(){
@@ -122,7 +118,8 @@ xhttp1.onload = () => {
 
       
       <div class="likeBtnBox">
-            <button onclick="likePost()" type="button" class="likePostBtn">Like</button>
+            <span id = "${item["id"]}" class="likeCountNumber">${item["likeCount"]}</span>&nbsp;&nbsp;
+            <button onclick="likePost(${item["id"]})" type="button" class="likePostBtn">Like</button>
       </div>
 
       
@@ -140,32 +137,89 @@ xhttp1.onload = () => {
 };
 
 
-function likePost(){
+function likePost(id){
 
-  var data = {
+  let likedQuestions;
+  
+  var xhttp2 = new XMLHttpRequest();
+  xhttp2.open("GET", "/auth/profile", true);
+  xhttp2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp2.setRequestHeader("Authorization", "Bearer " + tokenEle.innerText);
+  xhttp2.send();
 
-    "likeCount":"1000",
-   
+  xhttp2.onload = () => {
+    if (xhttp2.status === 200) {
+      
+      var responseData = JSON.parse(xhttp2.response);
+      likedQuestions = responseData["likedQuestions"];
+      
+      console.log(likedQuestions.length);
+      if(!likedQuestions.includes(id)){
+       
 
-  }
- 
-  var jsonData = JSON.stringify(data);
+  
+        let likeCountContainer = document.querySelector(`span[id="${id}"]`);
+  
+        let currentLikeCount = parseInt(likeCountContainer.innerText);
+        let newLikeCount = currentLikeCount + 1;
+      
+        let likeCountConv = newLikeCount.toString();
+      
+        var data = {
+      
+          "likeCount":likeCountConv,
+         
+        }
+       
+        var jsonData = JSON.stringify(data);
+      
+      
+      
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("PUT", "/auth/questions/"+ id + "/like", true);
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.setRequestHeader("Authorization", "Bearer " + tokenEle.innerText);
+        xhttp.send(jsonData);
+      
+        xhttp.onload = () => {
+          if (xhttp.status === 200) {
+            likeCountContainer.innerText = likeCountConv;
+            
+            ///add to arraylist question liked
+        //     likedQuestions.push(id);
+
+        //     var dataQuestion = {
+      
+        //       "likedQuestion":likedQuestions,
+             
+        //     }
+           
+        //     var quesntionLikedData = JSON.stringify(dataQuestion);
+          
+          
+          
+        //     var xhttp_ = new XMLHttpRequest();
+        //     xhttp_.open("PUT", "/auth/question/"+ id , true);
+        //     xhttp_.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //     xhttp_.setRequestHeader("Authorization", "Bearer " + tokenEle.innerText);
+        //     xhttp_.send(quesntionLikedData);
+
+
+      
+        /////Just updating the table of likes, still need to make a mechanism where we check user already liked the question or not...
+          }
+         };
 
 
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", "/auth/questions/like", true);
-  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhttp.setRequestHeader("Authorization", "Bearer " + tokenEle.innerText);
-  xhttp.send(jsonData);
+      }
 
-  xhttp.onload = () => {
-    if (xhttp.status === 200) {
-     // var responseData = JSON.parse(xhttp.response);
-      // window.location.href = `/user/profile?token=${tokenEle.innerText}`;
-     // window.location.href = `/user/home?token=${tokenEle.innerText}`;
+
+
     }
   };
+
+  
 
 
 

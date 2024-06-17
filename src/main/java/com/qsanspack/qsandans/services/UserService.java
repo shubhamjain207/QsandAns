@@ -1,5 +1,6 @@
 package com.qsanspack.qsandans.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -70,6 +71,15 @@ public class UserService implements UserDetailsService {
         repo1.updateLikeCount(questionId, likeCount);
 
     }
+
+
+    public void updateLikedQuestions(int questionId, ArrayList<Integer> likedQuestions){
+
+
+        repo.updateLikedQuestions(questionId, likedQuestions);
+
+    }
+
 
 
     public User setComment(String comment,String commentTime,String commentUser,String commentPostUser,String commentTimeMilli){

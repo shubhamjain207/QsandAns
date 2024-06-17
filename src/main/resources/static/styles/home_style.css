@@ -322,6 +322,15 @@ flex-direction: column;
 
 }
 
+.likeCountNumber{
+
+
+    font-size: 15px;
+
+
+}
+
+
 .showCommentsBtn{
     color: white;
     border-radius: 10px;
