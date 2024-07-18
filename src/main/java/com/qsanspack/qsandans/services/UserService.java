@@ -73,10 +73,9 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public void updateLikedQuestions(int questionId, ArrayList<Integer> likedQuestions){
+    public void updateLikedQuestions(int questionId, String likedQuestion){
 
-
-        repo.updateLikedQuestions(questionId, likedQuestions);
+        repo.updateLikedQuestions(questionId, likedQuestion);
 
     }
 

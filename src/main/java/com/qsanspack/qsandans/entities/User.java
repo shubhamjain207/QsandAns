@@ -38,16 +38,19 @@ public class User implements UserDetails {
     private String password;
     private String profilepicture;
     private String fullname;
-    private Set<Integer> likedQuestions;
+    private String likedQuestions;
     private Set<Role> authorities;
     
 
-    public Set<Integer> getLikedQuestions() {
+    public String getLikedQuestions() {
         return likedQuestions;
     }
 
     public void setLikedQuestions(int questionId) {
-        this.likedQuestions.add(questionId);
+        String quesId = String.valueOf(questionId);
+
+        this.likedQuestions+=", " + quesId;
+
     }
 
     public User() {
@@ -67,7 +70,7 @@ public class User implements UserDetails {
         this.profilepicture = profilepicture;
         this.fullname = fullname;
         this.authorities = authorities;
-        this.likedQuestions = new HashSet<Integer>();
+        this.likedQuestions = "";
        
     }
 

@@ -22,6 +22,6 @@ public interface UserRepo extends JpaRepository<User,Integer>{
     @Modifying
     @Transactional
     @Query("UPDATE User q SET q.likedQuestions = :likedQuestion WHERE q.id = :id")
-    void updateLikedQuestions(@Param("id") Integer id, @Param("likedQuestion") ArrayList<Integer> likedQuestion);
+    void updateLikedQuestions(@Param("id") Integer id, @Param("likedQuestion") String likedQuestion);
     
 }

@@ -103,14 +103,14 @@ import org.springframework.web.bind.annotation.PathVariable;
     @PutMapping("/questions/{id}/like")
     public ResponseEntity<?>  updateLikeCount(@PathVariable("id") int id, @RequestBody Map<String, Integer> requestData) {
 
+
         userService.updateLikeCount(id, requestData.get("likeCount"));
         return ResponseEntity.ok().build();
     }
 
 
     @PutMapping("/question/{id}")
-    public ResponseEntity<?>  updateLikedQuestions(@PathVariable("id") int id, @RequestBody Map<String, ArrayList<Integer>> requestData) {
-
+    public ResponseEntity<?>  updateLikedQuestions(@PathVariable("id") int id, @RequestBody Map<String, String> requestData) {
 
         userService.updateLikedQuestions(id, requestData.get("likedQuestion"));
         return ResponseEntity.ok().build();
